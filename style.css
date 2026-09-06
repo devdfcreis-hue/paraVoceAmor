@@ -1,0 +1,1104 @@
+/* ==============================
+           CONFIGURAÇÕES GERAIS
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #5b0f1b,
+                    #21040a 70%
+                );
+
+            font-family:
+                "Playfair Display",
+                serif;
+        }
+
+
+        /* ==============================
+           CORAÇÕES FLUTUANDO
+        ============================== */
+
+        .hearts {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 1;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            bottom: -100px;
+
+            color:
+                rgba(255, 255, 255, 0.28);
+
+            user-select: none;
+
+            animation:
+                floatHeart linear infinite;
+
+            will-change:
+                transform;
+        }
+
+
+        @keyframes floatHeart {
+
+            0% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+
+            10% {
+                opacity: 0.6;
+            }
+
+
+            90% {
+                opacity: 0.6;
+            }
+
+
+            100% {
+                transform:
+                    translateY(-120vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ==============================
+           TELA DO ENVELOPE
+        ============================== */
+
+        #envelope-screen {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+
+            z-index: 10;
+
+            transition:
+                opacity 1s ease,
+                visibility 1s ease;
+        }
+
+
+        #envelope-screen.hidden {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+        }
+
+
+        /* ==============================
+           CONTAINER DO ENVELOPE
+        ============================== */
+
+        .envelope-container {
+
+            position: relative;
+
+            width:
+                min(90vw, 700px);
+
+            aspect-ratio:
+                1.65 / 1;
+
+            perspective:
+                1500px;
+        }
+
+
+        /* ==============================
+           CORPO DO ENVELOPE
+        ============================== */
+
+        .envelope {
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5e3c3,
+                    #dfc69d
+                );
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.6);
+
+            border-radius: 4px;
+
+            overflow: hidden;
+        }
+
+
+        /* ==============================
+           LINHAS DO ENVELOPE
+        ============================== */
+
+        .envelope::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    35deg,
+                    transparent 49%,
+                    rgba(150, 100, 60, 0.25) 50%,
+                    transparent 51%
+                ),
+
+                linear-gradient(
+                    -35deg,
+                    transparent 49%,
+                    rgba(150, 100, 60, 0.25) 50%,
+                    transparent 51%
+                );
+
+            z-index: 2;
+        }
+
+
+        /* ==============================
+           ABA DO ENVELOPE
+        ============================== */
+
+        .envelope-flap {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 55%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ead4ae,
+                    #d7b985
+                );
+
+            clip-path:
+                polygon(
+                    0 0,
+                    100% 0,
+                    50% 100%
+                );
+
+            transform-origin:
+                top center;
+
+            transition:
+                transform
+                1.4s
+                cubic-bezier(
+                    .68,
+                    -0.55,
+                    .27,
+                    1.55
+                );
+
+            z-index: 5;
+
+            backface-visibility:
+                hidden;
+        }
+
+
+        /* ==============================
+           TEXTO DO ENVELOPE
+        ============================== */
+
+        .envelope-info {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            padding:
+                20px 15px 30px;
+
+            color:
+                #54202a;
+
+            z-index: 3;
+        }
+
+
+        .from {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size:
+                clamp(24px, 4vw, 42px);
+
+            margin-bottom:
+                clamp(15px, 3vw, 25px);
+        }
+
+
+        .to {
+
+            font-family:
+                "Great Vibes",
+                cursive;
+
+            font-size:
+                clamp(38px, 7vw, 75px);
+
+            line-height: 1.1;
+        }
+
+
+        /* ==============================
+           SELO
+        ============================== */
+
+        .seal {
+
+            position: absolute;
+
+            width:
+                clamp(75px, 12vw, 105px);
+
+            aspect-ratio:
+                1 / 1;
+
+            border-radius: 50%;
+
+            left: 50%;
+
+            top: 58%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border: none;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #ff5269,
+                    #a3001e 60%,
+                    #610010
+                );
+
+            box-shadow:
+                0 10px 20px
+                rgba(0,0,0,0.4),
+
+                inset 0 5px 10px
+                rgba(255,255,255,0.25),
+
+                inset 0 -5px 10px
+                rgba(0,0,0,0.3);
+
+            font-size:
+                clamp(30px, 5vw, 45px);
+
+            transition:
+                transform .3s ease;
+
+            -webkit-tap-highlight-color:
+                transparent;
+        }
+
+
+        .seal:hover {
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.1);
+        }
+
+
+        .seal:active {
+
+            transform:
+                translate(-50%, -50%)
+                scale(.95);
+        }
+
+
+        /* ==============================
+           SELO QUEBRANDO
+        ============================== */
+
+        .seal.breaking {
+
+            pointer-events: none;
+
+            animation:
+                breakSeal
+                .9s
+                forwards;
+        }
+
+
+        @keyframes breakSeal {
+
+            0% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1)
+                    rotate(0);
+
+                opacity: 1;
+            }
+
+
+            30% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.25)
+                    rotate(8deg);
+            }
+
+
+            60% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(.8)
+                    rotate(-10deg);
+            }
+
+
+            100% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(0)
+                    rotate(180deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* ==============================
+           ENVELOPE ABRINDO
+        ============================== */
+
+        .envelope.open .envelope-flap {
+
+            transform:
+                rotateX(180deg);
+
+            z-index: 1;
+        }
+
+
+        /* ==============================
+           CARTA
+        ============================== */
+
+        #letter-section {
+
+            position: relative;
+
+            min-height: 100vh;
+
+            z-index: 2;
+
+            display: none;
+
+            justify-content: center;
+
+            padding:
+                clamp(30px, 6vw, 70px)
+                clamp(10px, 3vw, 30px)
+                80px;
+        }
+
+
+        #letter-section.visible {
+
+            display: flex;
+
+            animation:
+                showLetter
+                1.5s
+                ease
+                forwards;
+        }
+
+
+        @keyframes showLetter {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(80px);
+            }
+
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ==============================
+           PAPEL DA CARTA
+        ============================== */
+
+        .letter {
+
+            width:
+                min(900px, 100%);
+
+            min-height:
+                1000px;
+
+            padding:
+                clamp(40px, 8vw, 100px)
+                clamp(22px, 7vw, 80px);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffaf0,
+                    #f2e3c4
+                );
+
+            border-radius:
+                3px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,0.5);
+
+            position: relative;
+        }
+
+
+        .letter::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: .25;
+
+            pointer-events: none;
+
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 3px,
+                    rgba(100,70,40,.08)
+                    4px
+                );
+        }
+
+
+        .letter-content {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* ==============================
+           TÍTULO
+        ============================== */
+
+        .letter h1 {
+
+            text-align: center;
+
+            font-family:
+                "Great Vibes",
+                cursive;
+
+            color:
+                #8c1730;
+
+            font-size:
+                clamp(45px, 8vw, 85px);
+
+            line-height:
+                1.1;
+
+            margin-bottom:
+                clamp(35px, 7vw, 60px);
+        }
+
+
+        /* ==============================
+           TEXTO
+        ============================== */
+
+        .letter p {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size:
+                clamp(23px, 3vw, 34px);
+
+            line-height:
+                1.6;
+
+            color:
+                #3f2525;
+
+            margin-bottom:
+                clamp(22px, 4vw, 35px);
+        }
+
+
+        .letter strong {
+
+            color:
+                #9b1730;
+        }
+
+
+        /* ==============================
+           ASSINATURA
+        ============================== */
+
+        .signature {
+
+            text-align: right;
+
+            margin-top:
+                clamp(50px, 8vw, 70px);
+
+            font-family:
+                "Great Vibes",
+                cursive;
+
+            font-size:
+                clamp(42px, 7vw, 75px);
+
+            line-height:
+                1.2;
+
+            color:
+                #8c1730;
+        }
+
+
+        /* ==============================
+           GALERIA DE CARTAS
+        ============================== */
+
+        .final-photo {
+
+            margin-top:
+                clamp(50px, 8vw, 80px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+
+        .photo-cards {
+
+            position: relative;
+
+            width:
+                min(600px, 100%);
+
+            height:
+                clamp(360px, 55vw, 560px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            margin: 20px auto 0;
+
+            cursor: pointer;
+        }
+
+
+        .photo-card {
+
+            position: absolute;
+
+            width:
+                clamp(190px, 42vw, 340px);
+
+            aspect-ratio:
+                3 / 4;
+
+            overflow: hidden;
+
+            background: white;
+
+            border:
+                clamp(6px, 1.5vw, 12px)
+                solid
+                white;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.35);
+
+            transition:
+                transform
+                .6s
+                cubic-bezier(
+                    .22,
+                    .61,
+                    .36,
+                    1
+                ),
+
+                box-shadow
+                .4s
+                ease;
+
+            will-change:
+                transform;
+        }
+
+
+        .photo-card img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* CARTA DA ESQUERDA */
+
+        .card-1 {
+
+            z-index: 1;
+
+            transform:
+                translateX(-32%)
+                rotate(-12deg);
+        }
+
+
+        /* CARTA DO MEIO */
+
+        .card-2 {
+
+            z-index: 3;
+
+            transform:
+                translateY(-8px)
+                rotate(0deg);
+        }
+
+
+        /* CARTA DA DIREITA */
+
+        .card-3 {
+
+            z-index: 2;
+
+            transform:
+                translateX(32%)
+                rotate(12deg);
+        }
+
+
+        /* ==============================
+           EFEITO AO PASSAR O MOUSE
+        ============================== */
+
+        .photo-cards:hover .card-1 {
+
+            transform:
+                translateX(-78%)
+                rotate(-10deg)
+                translateY(-10px);
+
+            z-index: 4;
+        }
+
+
+        .photo-cards:hover .card-2 {
+
+            transform:
+                translateY(-20px)
+                rotate(0deg)
+                scale(1.04);
+
+            z-index: 5;
+        }
+
+
+        .photo-cards:hover .card-3 {
+
+            transform:
+                translateX(78%)
+                rotate(10deg)
+                translateY(-10px);
+
+            z-index: 4;
+        }
+
+
+        .photo-cards:hover .photo-card {
+
+            box-shadow:
+                0 25px 50px
+                rgba(0,0,0,0.4);
+        }
+
+
+        /* ==============================
+           MENSAGEM FINAL
+        ============================== */
+
+        .final-message {
+
+            margin-top:
+                clamp(30px, 6vw, 50px);
+
+            font-family:
+                "Great Vibes",
+                cursive;
+
+            font-size:
+                clamp(45px, 8vw, 90px);
+
+            line-height:
+                1.1;
+
+            color:
+                #9b1730;
+        }
+
+
+        /* ==============================
+           RESPONSIVIDADE CELULAR
+        ============================== */
+
+        @media (max-width: 600px) {
+
+            #envelope-screen {
+
+                padding: 15px;
+            }
+
+
+            .envelope-container {
+
+                width: 100%;
+
+                max-width: 500px;
+            }
+
+
+            .envelope-info {
+
+                padding-bottom: 20px;
+            }
+
+
+            .from {
+
+                font-size:
+                    clamp(23px, 7vw, 30px);
+
+                margin-bottom:
+                    15px;
+            }
+
+
+            .to {
+
+                font-size:
+                    clamp(38px, 12vw, 58px);
+
+                padding:
+                    0 10px;
+            }
+
+
+            .seal {
+
+                top: 60%;
+            }
+
+
+            #letter-section {
+
+                padding:
+                    30px
+                    10px
+                    60px;
+            }
+
+
+            .letter {
+
+                min-height: auto;
+
+                padding:
+                    45px
+                    22px;
+            }
+
+
+            .letter h1 {
+
+                font-size:
+                    clamp(42px, 13vw, 65px);
+
+                margin-bottom:
+                    35px;
+            }
+
+
+            .letter p {
+
+                font-size:
+                    clamp(22px, 6vw, 29px);
+
+                line-height:
+                    1.5;
+
+                margin-bottom:
+                    25px;
+            }
+
+
+            .signature {
+
+                font-size:
+                    clamp(42px, 12vw, 65px);
+
+                margin-top:
+                    50px;
+            }
+
+
+            .final-photo {
+
+                margin-top:
+                    50px;
+            }
+
+
+            .photo-cards {
+
+                width: 100%;
+
+                height:
+                    clamp(300px, 105vw, 460px);
+
+                margin-top: 10px;
+            }
+
+
+            .photo-card {
+
+                width:
+                    clamp(170px, 62vw, 280px);
+            }
+
+
+            /*
+               No celular não existe hover,
+               então as 3 cartas ficam
+               mais abertas automaticamente
+            */
+
+            .card-1 {
+
+                transform:
+                    translateX(-48%)
+                    rotate(-10deg);
+            }
+
+
+            .card-2 {
+
+                transform:
+                    translateY(-8px)
+                    rotate(0deg);
+            }
+
+
+            .card-3 {
+
+                transform:
+                    translateX(48%)
+                    rotate(10deg);
+            }
+
+
+            .final-message {
+
+                font-size:
+                    clamp(42px, 12vw, 70px);
+            }
+        }
+
+
+        @media (max-width: 380px) {
+
+            .from {
+
+                font-size: 22px;
+            }
+
+
+            .to {
+
+                font-size: 40px;
+            }
+
+
+            .seal {
+
+                width: 70px;
+
+                font-size: 28px;
+            }
+
+
+            .letter {
+
+                padding:
+                    35px
+                    18px;
+            }
+
+
+            .letter p {
+
+                font-size: 21px;
+            }
+
+
+            .photo-cards {
+
+                height: 310px;
+            }
+
+
+            .photo-card {
+
+                width: 175px;
+            }
+
+
+            .card-1 {
+
+                transform:
+                    translateX(-42%)
+                    rotate(-9deg);
+            }
+
+
+            .card-3 {
+
+                transform:
+                    translateX(42%)
+                    rotate(9deg);
+            }
+        }
